@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You Are Booked | Top Performance Physical Therapy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --gold: #C9A84C;
+      --gold-dim: rgba(201, 168, 76, 0.10);
+      --gold-border: rgba(201, 168, 76, 0.28);
+      --black: #080808;
+      --surface: #101010;
+      --border: #1c1c1c;
+      --white: #ffffff;
+      --gray: #606060;
+      --gray-light: #909090;
+      --text: #d0d0d0;
+    }
+
+    html { background: var(--black); scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--black);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.5;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* HEADER */
+    .site-header {
+      position: relative;
+      z-index: 10;
+      border-bottom: 1px solid var(--border);
+      padding: 20px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo { display: flex; flex-direction: column; gap: 2px; }
+
+    .logo-top {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .logo-bottom {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-light);
+    }
+
+    .header-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-border);
+      padding: 6px 14px;
+      background: var(--gold-dim);
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      z-index: 1;
+      padding: 80px 48px 52px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.05s forwards;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .hero-headline {
+      font-size: clamp(34px, 5.5vw, 54px);
+      font-weight: 800;
+      line-height: 1.06;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.15s forwards;
+    }
+
+    .hero-headline .gold { color: var(--gold); }
+
+    .hero-sub {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.8;
+      color: var(--gray-light);
+      max-width: 580px;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.25s forwards;
+    }
+
+    .hero-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.3s forwards;
+    }
+
+    /* INTRO */
+    .intro {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 52px 48px 56px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.35s forwards;
+    }
+
+    .intro-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 18px;
+    }
+
+    .intro-body {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.85;
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+
+    .intro-bold {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.85;
+      color: var(--white);
+    }
+
+    /* ROADMAP */
+    .roadmap {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .steps { display: flex; flex-direction: column; }
+
+    .step {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 0 24px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .step:nth-child(1) { animation-delay: 0.5s; }
+    .step:nth-child(2) { animation-delay: 0.65s; }
+    .step:nth-child(3) { animation-delay: 0.8s; }
+    .step:nth-child(4) { animation-delay: 0.95s; }
+
+    .step-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 3px;
+    }
+
+    .step-num {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--gold-border);
+      background: var(--gold-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .step-line {
+      flex: 1;
+      width: 1px;
+      background: var(--border);
+      margin-top: 8px;
+    }
+
+    .step:last-child .step-line { display: none; }
+
+    .step-right { padding-bottom: 44px; }
+    .step:last-child .step-right { padding-bottom: 0; }
+
+    .step-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .step-desc {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.8;
+      color: var(--gray-light);
+    }
+
+    .step-tag {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--gold-dim);
+      border: 1px solid var(--gold-border);
+      padding: 4px 10px;
+    }
+
+    /* PREP BOX */
+    .prep {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 1.1s forwards;
+    }
+
+    .prep-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      padding: 36px 40px;
+    }
+
+    .prep-heading {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 22px;
+    }
+
+    .prep-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .prep-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .prep-list li::before {
+      content: '';
+      display: block;
+      width: 5px;
+      height: 5px;
+      background: var(--gold);
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    /* SIGN OFF */
+    .signoff {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 52px 48px 96px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 1.2s forwards;
+    }
+
+    .signoff-text {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.75;
+      color: var(--gray-light);
+      margin-bottom: 24px;
+    }
+
+    .signoff-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    .signoff-name span {
+      display: block;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--gray-light);
+      margin-top: 2px;
+    }
+
+    /* SITE FOOTER */
+    .site-footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 26px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-brand {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .footer-tagline {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--gray);
+      letter-spacing: 0.04em;
+    }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+      .site-header {
+        padding: 18px 24px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .hero     { padding: 56px 24px 44px; }
+      .intro    { padding: 40px 24px 48px; }
+      .roadmap  { padding: 0 24px 64px; }
+      .prep     { padding: 0 24px 64px; }
+      .prep-box { padding: 28px 22px; }
+      .signoff  { padding: 40px 24px 80px; }
+      .site-footer {
+        padding: 22px 24px;
+        flex-direction: column;
+        gap: 6px;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-top">Top Performance</span>
+      <span class="logo-bottom">Physical Therapy</span>
+    </div>
+    <div class="header-badge">Booking Confirmed</div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-eyebrow">Dr. Sam Englander, PT, DPT</div>
+    <h1 class="hero-headline">
+      You are booked.<br>Here is what to <span class="gold">expect.</span>
+    </h1>
+    <p class="hero-sub">
+      Before the first session, here is a clear picture of how this works so you show up knowing exactly what you are walking into.
+    </p>
+    <div class="hero-divider"></div>
+  </section>
+
+  <section class="intro">
+    <div class="intro-label">How this works</div>
+    <p class="intro-body">
+      Top Performance PT is not a traditional clinic. There is no waiting room, no shared treatment table, no clock running out after 30 minutes. Every session is one-on-one and it happens in your gym, your home, or wherever you actually train.
+    </p>
+    <p class="intro-bold">
+      The clinical philosophy is simple: rehab should look like training. You are not getting pulled off the bar. Your programming is not getting replaced with band walks and clamshells. The goal is to find what is actually driving your pain or limitation under load, address it directly, and get you back to lifting at full capacity as fast as possible and then past it.
+    </p>
+  </section>
+
+  <section class="roadmap">
+    <div class="section-label">Your roadmap</div>
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">01</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-right">
+          <div class="step-title">Assessment</div>
+          <p class="step-desc">
+            Find the root cause. Not just where it hurts, but why it is happening under the specific demands of your training. Movement quality, load tolerance, and sport-specific positions are all on the table.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">02</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-right">
+          <div class="step-title">Symptom Reduction</div>
+          <p class="step-desc">
+            Address what is limiting you now without taking you out of training. Modifications are built around your program, not the other way around. You keep lifting while the underlying issue gets resolved.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">03</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-right">
+          <div class="step-title">Foundation Building</div>
+          <p class="step-desc">
+            Once pain is managed, close the gaps. Strength asymmetries, movement deficiencies, and positions that break down under load. This is where long-term durability gets built.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">04</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-right">
+          <div class="step-title">Performance Optimization</div>
+          <p class="step-desc">
+            This is where most PT stops. We do not. Once back at baseline, the work shifts toward making you a more resilient and stronger athlete than you were before the injury.
+          </p>
+          <div class="step-tag">Delivered remotely through your phone</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="prep">
+    <div class="section-label">Before your session</div>
+    <div class="prep-box">
+      <div class="prep-heading">How to prepare</div>
+      <ul class="prep-list">
+        <li>Wear what you would train in. If a specific lift has been painful, be ready to move through it.</li>
+        <li>Know when the issue started and what makes it better or worse under load.</li>
+        <li>Have a sense of what your training has looked like around the injury. Volume, frequency, and any recent changes to programming or intensity.</li>
+        <li>Be specific. The more detail you bring to the session, the faster we move past assessment and into actual work.</li>
+        <li>Any questions before the session, reply to the confirmation email or reach out directly through the Practice Better app.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="signoff">
+    <p class="signoff-text">
+      Looking forward to getting to work. If anything comes up before the session, do not hesitate to reach out.
+    </p>
+    <div class="signoff-name">
+      Dr. Sam Englander, PT, DPT
+      <span>Top Performance Physical Therapy &nbsp;|&nbsp; Denver, CO</span>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <span class="footer-brand">Top Performance PT</span>
+    <span class="footer-tagline">Rehab that looks like training.</span>
+  </footer>
+
+</body>
+</html>
