@@ -4,6 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>You Are Booked | Top Performance Physical Therapy</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z4YMRZ4M1Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Z4YMRZ4M1Z');
+
+    // Fire a purchase/conversion event when this confirmation page loads
+    gtag('event', 'purchase', {
+      transaction_id: Date.now().toString(),
+      value: 1,
+      currency: 'USD',
+      items: [{
+        item_name: 'PT Session Booking',
+        item_category: 'Physical Therapy',
+        quantity: 1
+      }]
+    });
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
